@@ -30,12 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const showHome = document.getElementById('seeHome');
 
     if (elementToShow) {
-        seeMoreElement.addEventListener('click', () => {
+        seeMoreElement.addEventListener('click', (e) => {
+            e.preventDefault();
             elementToShow.classList.add('page--current');
             elementToShow.classList.remove('page--hidden');
         });
 
-        showHome.addEventListener('click', () => {
+        showHome.addEventListener('click', (e) => {
+            e.preventDefault();
             elementToShow.classList.remove('page--current');
             elementToShow.classList.add('page--hidden');
         });
@@ -47,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const menu = document.querySelector(".menu-responsive");
         if (menu.style.display === "none" || menu.style.display === "") {
             menu.style.display = "block";
-            // Adding a "slow" effect can be tricky, but you can use CSS transitions for that
             menu.style.transition = "display 0.5s ease-in-out";
         } else {
             menu.style.display = "none";
@@ -56,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll(".scroll").forEach(anchor => {
         anchor.addEventListener("click", function(e) {
-            e.preventDefault(); // Prevent default anchor behavior
+            e.preventDefault();
     
             const targetId = this.getAttribute("href").substring(1);
             const targetElement = document.getElementById(targetId);
