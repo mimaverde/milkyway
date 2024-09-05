@@ -50,6 +50,7 @@ section {
     background: #fff;
     animation: animate 6s linear infinite;
     opacity: 0.8;
+    filter: blur(2.5px);
 }
 
 .content {
@@ -211,10 +212,10 @@ section {
         opacity: 0;
     }
     10% {
-        opacity: 1;
+        opacity: var(--max-opacity);
     }
     90% {
-        opacity: 1;
+        opacity: var(--max-opacity);
     }
     100% {
         transform: scale(1) translateY(-500%) rotate(360deg);

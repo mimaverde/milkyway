@@ -6,13 +6,20 @@ createCircles = () => {
     const section = document.getElementById('bubbles');
     const circles = document.createElement('span');
 
-    const size = Math.random() * 25;
+    const size = Math.random();
 
-    circles.style.width = 10 + size + 'px';
-    circles.style.height = 10 + size + 'px';
+    const maxOpacity = 40 + Math.random() * 60
+    const blur = 1 + size * 4
+
+
+    circles.style.width = 10 + (size * 25) + 'px';
+    circles.style.height = 10 + (size * 25) + 'px';
 
     circles.style.top = Math.random() * innerHeight + 'px';
     circles.style.left = Math.random() * innerWidth + 'px';
+
+    circles.style.filter = `blur(${blur}px)`;
+    circles.style['--max-opacity'] = `${maxOpacity}%`;
 
     circles.style.background = pastelColors[Math.floor(Math.random() * pastelColors.length)];
     section.appendChild(circles);
