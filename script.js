@@ -37,6 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const showHome = document.getElementById('seeHome');
     const closeAll = document.getElementById('isHome');
     const aboutUs = document.getElementById('aboutUs');
+    const games = document.getElementById('games');
+    const services = document.getElementById('services');
+    const contact = document.getElementById('contact');
 
     if (elementToShow) {
         seeMoreElement.addEventListener('click', (e) => {
@@ -45,6 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
             elementToShow.classList.remove('page--hidden');
             closeAll.classList.remove('selected');
             aboutUs.classList.add('selected');
+            games.classList.remove('selected');
+            services.classList.remove('selected');
+            contact.classList.remove('selected');
         });
 
         showHome.addEventListener('click', (e) => {
@@ -53,6 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
             elementToShow.classList.add('page--hidden');
             closeAll.classList.add('selected');
             aboutUs.classList.remove('selected');
+
+            games.classList.remove('selected');
+            services.classList.remove('selected');
+            contact.classList.remove('selected');
+            
         });
 
         closeAll.addEventListener('click', (e) => {
@@ -62,6 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 elementToShow.classList.add('page--hidden');
                 closeAll.classList.add('selected');
                 aboutUs.classList.remove('selected');
+                games.classList.remove('selected');
+                services.classList.remove('selected');
+                contact.classList.remove('selected');
             }
         });
 
@@ -71,7 +85,43 @@ document.addEventListener('DOMContentLoaded', () => {
             closeAll.classList.remove('selected');
             elementToShow.classList.add('page--current');
             elementToShow.classList.remove('page--hidden');
-        })
+            games.classList.remove('selected');
+            services.classList.remove('selected');
+            contact.classList.remove('selected');
+        });
+
+        games.addEventListener('click', (e) => {
+            e.preventDefault();
+            games.classList.add('selected');
+            closeAll.classList.remove('selected');
+            elementToShow.classList.add('page--current');
+            elementToShow.classList.remove('page--hidden');
+            services.classList.remove('selected');
+            contact.classList.remove('selected');
+            aboutUs.classList.remove('selected');
+        });
+        
+        services.addEventListener('click', (e) => {
+            e.preventDefault();
+            services.classList.add('selected');
+            closeAll.classList.remove('selected');
+            elementToShow.classList.add('page--current');
+            elementToShow.classList.remove('page--hidden');
+            games.classList.remove('selected');
+            contact.classList.remove('selected');
+            aboutUs.classList.remove('selected');
+        });
+
+        contact.addEventListener('click', (e) => {
+            e.preventDefault();
+            services.classList.remove('selected');
+            closeAll.classList.remove('selected');
+            elementToShow.classList.add('page--current');
+            elementToShow.classList.remove('page--hidden');
+            games.classList.remove('selected');
+            contact.classList.add('selected');
+            aboutUs.classList.remove('selected');
+        });
     }
 });
 
