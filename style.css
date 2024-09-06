@@ -188,8 +188,14 @@ section {
     background-color: #cc5ef5;
 }
 
-#menuToggle div {
-    display: block;
+.nav__mobile {
+    position: absolute;
+    display: none;
+    top: 32px;
+    right: 32px;
+}
+
+.nav__mobile div {
     width: 33px;
     height: 4px;
     margin-bottom: 5px;
@@ -197,16 +203,54 @@ section {
     background: white;
     border-radius: 3px;
     z-index: 1;
-    display: none;
 }
 
 @media screen and (max-width: 768px) {
-    .header__nav a {
-        display: none;
+    .nav__mobile {
+        display: block;
     }
 
-    #menuToggle div {
+    .header__nav ul {
+        display: none;
+        visibility: hidden;
+        font-size: 2rem;
+        position: absolute;
+        top: -20px;
+        background-color: #cc5ef5;
+        height: 100vh;
+        left: -20px;
+        right: 0;
+        text-align: center;
+        padding: 100px;
+        line-height: 50px;
+        font-size: 0;
+    }
+
+    .header__nav.open ul {
         display: block;
+        visibility: visible;
+        animation: showSide 1.5s cubic-bezier(0.215, 0.610, 0.355, 1);
+    }
+
+    .header__nav.open .nav__mobile{
+        transform: matrix(-1, 0, 0, -1, 0, 0);
+        transition: all 1.6s cubic-bezier(0.850, -0.475, 0.435, 1.000);
+    }
+
+    .header__nav.open .nav__mobile div:nth-child(1) {
+        animation: toActive1 1.5s forwards ease-out;
+    }
+
+    .header__nav.open .nav__mobile div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header__nav.open .nav__mobile div:nth-child(3){
+        animation: toActive2 1.5s forwards ease-out;
+    }
+    
+    .header__nav a {
+        font-size: 2rem;
     }
 }
 
@@ -239,6 +283,19 @@ section {
     }
 }
 
+@keyframes showSide {
+    0% {
+        right: -100vw;
+        opacity: 0;
+        visibility: hidden;
+    }
+    100% {
+        right: 0;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
 @keyframes moveToTop {
     0% {transform: translateY(100%)}
     100% {transform: translateY(0)}
@@ -266,3 +323,28 @@ section {
     }
 }
 
+
+  
+  @keyframes toActive1 {
+    0%   {transform: matrix(1, 0, 0, 1, 0, 0);}
+    25%  {transform: matrix(1, 0, 0, 1, 0, 6);}
+    40%  {transform: matrix(1, 0, 0, 1, 0, 6);}
+    100% {transform: matrix(0.7071, 0.7071, -0.7071, 0.7071, 0, 11);}
+  }
+  @keyframes toActive2 {
+    0%   {transform: matrix(1, 0, 0, 1, 0, 0);}
+    25%  {transform: matrix(1, 0, 0, 1, 0, -6);}
+    40%  {transform: matrix(1, 0, 0, 1, 0, -6);}
+    100% {transform: matrix(0.7071, -0.7071, 0.7071, 0.7071, 0, -6);}
+  }
+  
+  @keyframes toNormal1 {
+    0%   {transform: matrix(0.7071, 0.7071, -0.7071, 0.7071, 0, 6);}
+    75%  {transform: matrix(1, 0, 0, 1, 0, 6);}
+    100% {transform: matrix(1, 0, 0, 1, 0, 0);}
+  }
+  @keyframes toNormal2 {
+    0%   {transform: matrix(0.7071, -0.7071, 0.7071, 0.7071, 0, -6);}
+    75%  {transform: matrix(1, 0, 0, 1, 0, -6);}
+    100% {transform: matrix(1, 0, 0, 1, 0, 0);}
+  }

@@ -40,10 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const games = document.getElementById('games');
     const services = document.getElementById('services');
     const contact = document.getElementById('contact');
+    const iconMenuMobile = document.getElementById('menuToggle');
+    const menuMobile = document.getElementById('menu');
 
     if (elementToShow) {
         seeMoreElement.addEventListener('click', (e) => {
             e.preventDefault();
+            menuMobile.classList.remove('open');
             elementToShow.classList.add('page--current');
             elementToShow.classList.remove('page--hidden');
             closeAll.classList.remove('selected');
@@ -55,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         showHome.addEventListener('click', (e) => {
             e.preventDefault();
+            menuMobile.classList.remove('open');
             elementToShow.classList.remove('page--current');
             elementToShow.classList.add('page--hidden');
             closeAll.classList.add('selected');
@@ -69,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeAll.addEventListener('click', (e) => {
             e.preventDefault();
             if(elementToShow.classList.contains('page--current')){
+                menuMobile.classList.remove('open');
                 elementToShow.classList.remove('page--current');
                 elementToShow.classList.add('page--hidden');
                 closeAll.classList.add('selected');
@@ -81,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         aboutUs.addEventListener('click', (e) => {
             e.preventDefault();
+            menuMobile.classList.remove('open');
             aboutUs.classList.add('selected');
             closeAll.classList.remove('selected');
             elementToShow.classList.add('page--current');
@@ -92,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         games.addEventListener('click', (e) => {
             e.preventDefault();
+            menuMobile.classList.remove('open');
             games.classList.add('selected');
             closeAll.classList.remove('selected');
             elementToShow.classList.add('page--current');
@@ -103,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         services.addEventListener('click', (e) => {
             e.preventDefault();
+            menuMobile.classList.remove('open');
             services.classList.add('selected');
             closeAll.classList.remove('selected');
             elementToShow.classList.add('page--current');
@@ -114,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         contact.addEventListener('click', (e) => {
             e.preventDefault();
+            menuMobile.classList.remove('open');
             services.classList.remove('selected');
             closeAll.classList.remove('selected');
             elementToShow.classList.add('page--current');
@@ -122,6 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
             contact.classList.add('selected');
             aboutUs.classList.remove('selected');
         });
+
+        iconMenuMobile.addEventListener('click', (e) => {
+            e.preventDefault();
+            if(menuMobile.classList.contains('open')){
+                menuMobile.classList.remove('open');
+            }else{
+                menuMobile.classList.add('open');
+            }
+        })
     }
 });
 
