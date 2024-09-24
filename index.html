@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,17 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
+
 <body>
     <header class="header">
         <div class="header__container">
             <nav class="header__nav" id="menu">
-                <ul>
-                    <li><a class="selected" href="" id="isHome">Home</a></li>
-                    <li><a href="" id="aboutUs">About us</a></li>
-                    <li><a href="" id="games">Games</a></li>
-                    <li><a href="" id="services">Services</a></li>
-                    <li><a href="" id="contact">Contact</a></li>
+                <ul id="myMenu">
+                    <li><a class="selected" href="" data-content="home">Home</a></li>
+                    <li><a href="" data-content="about-us">About us</a></li>
+                    <li><a href="" data-content="games">Games</a></li>
+                    <li><a href="" data-content="services">Services</a></li>
+                    <li><a href="" data-content="contact">Contact</a></li>
                 </ul>
                 <div id="menuToggle" class="nav__mobile">
                     <div></div>
@@ -29,16 +31,52 @@
     <section class="primary">
         <div class="content">
             <div class="content__title">Milky Way</div>
-            <div class="content__subtitle">Embark on a heartwarming journey through a whimsical world where every hug and high-five brings you closer to unlocking new adventures and friendships.</div>
-            <div class="see__more" id="seeMore"><a href=""><span>More about it</span></a></div>
+            <div class="content__subtitle">Embark on a heartwarming journey through a whimsical world where every hug
+                and high-five brings you closer to unlocking new adventures and friendships.</div>
+            <div class="see__more"><a href="" id="seeMore" data-link="about-us"><span>More about it</span></a></div>
         </div>
         <div id="bubbles" class="bubbles"></div>
     </section>
-    <section class="page" id="pageToShow">
+
+    <section class="page" data-show="about-us">
         <div class="content">
-            <div class="content__title">Internal page</div>
-            <div class="content__subtitle">Step into a delightful adventure where every hug and high-five brings a new twist to your journey. Explore a whimsical world filled with charming characters and enchanting quests. As you share moments of joy and friendship, you’ll unlock exciting new adventures and uncover the magic hidden in every corner!</div>
-            <div class="see__more" id="seeHome"><a href=""><span>Back Home</span></a></div>
+            <div class="content__title">About us</div>
+            <div class="content__subtitle">Step into a delightful adventure where every hug and high-five brings a new
+                twist to your journey. Explore a whimsical world filled with charming characters and enchanting quests.
+                As you share moments of joy and friendship, you’ll unlock exciting new adventures and uncover the magic
+                hidden in every corner!</div>
+            <div class="see__more" id="seeHome"><a href="" data-link="home"><span>Back Home</span></a></div>
         </div>
     </section>
+    <section class="page" data-show="games">
+        <div class="content">
+            <div class="content__title">Games</div>
+            <div class="content__subtitle">Step into a delightful adventure where every hug and high-five brings a new
+                twist to your journey. Explore a whimsical world filled with charming characters and enchanting quests.
+                As you share moments of joy and friendship, you’ll unlock exciting new adventures and uncover the magic
+                hidden in every corner!</div>
+            <div class="see__more" id="seeHome"><a href="" data-link="home"><span>Back Home</span></a></div>
+        </div>
+    </section>
+    <section class="page" data-show="services">
+        <div class="content">
+            <div class="content__title">Services</div>
+            <div class="content__subtitle">Step into a delightful adventure where every hug and high-five brings a new
+                twist to your journey. Explore a whimsical world filled with charming characters and enchanting quests.
+                As you share moments of joy and friendship, you’ll unlock exciting new adventures and uncover the magic
+                hidden in every corner!</div>
+            <div class="see__more" id="seeHome"><a href="" data-link="home"><span>Back Home</span></a></div>
+        </div>
+    </section>
+    <section class="page" data-show="contact">
+        <div class="content">
+            <div class="content__title">Contact</div>
+            <div class="content__subtitle">Step into a delightful adventure where every hug and high-five brings a new
+                twist to your journey. Explore a whimsical world filled with charming characters and enchanting quests.
+                As you share moments of joy and friendship, you’ll unlock exciting new adventures and uncover the magic
+                hidden in every corner!</div>
+            <div class="see__more" id="seeHome"><a href="" data-link="home"><span>Back Home</span></a></div>
+        </div>
+    </section>
+
 </html>

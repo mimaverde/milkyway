@@ -32,114 +32,69 @@ createCircles = () => {
 setInterval(createCircles, 150);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const seeMoreElement = document.getElementById('seeMore');
-    const elementToShow = document.getElementById('pageToShow');
-    const showHome = document.getElementById('seeHome');
-    const closeAll = document.getElementById('isHome');
-    const aboutUs = document.getElementById('aboutUs');
-    const games = document.getElementById('games');
-    const services = document.getElementById('services');
-    const contact = document.getElementById('contact');
     const iconMenuMobile = document.getElementById('menuToggle');
+    const menuItems = document.querySelectorAll('#myMenu a');
     const menuMobile = document.getElementById('menu');
-
-    if (elementToShow) {
-        seeMoreElement.addEventListener('click', (e) => {
+    const contents = document.querySelectorAll('section');
+    const linksToContent = document.querySelectorAll('a[data-link]');
+    
+    //Add action to each menu item
+    menuItems.forEach(menuItem => {
+        menuItem.addEventListener('click', (e) => {
             e.preventDefault();
+            const contentValue = menuItem.dataset.content;
+
+            //Closes the menu mobile
             menuMobile.classList.remove('open');
-            elementToShow.classList.add('page--current');
-            elementToShow.classList.remove('page--hidden');
-            closeAll.classList.remove('selected');
-            aboutUs.classList.add('selected');
-            games.classList.remove('selected');
-            services.classList.remove('selected');
-            contact.classList.remove('selected');
-        });
 
-        showHome.addEventListener('click', (e) => {
+            //Remove select from all menu items
+            menuItems.forEach(item => item.classList.remove('selected'));
+
+            //Add to selected to the clicked element
+            e.currentTarget.classList.add('selected');
+
+            //Show the selected content
+            contents.forEach(content => {
+                const contentPage = content.dataset.show;
+
+                // If home is selected close all the page if is not show the current page selected
+                if (contentValue === 'home') {
+                    if (content.classList.contains('page--current')) {
+                        content.classList.remove('page--current');
+                        content.classList.add('page--hidden');
+                    }
+                } else {
+                    if (contentPage === contentValue) {
+                        content.classList.add('page--current');
+                        content.classList.remove('page--hidden');
+                    } else {
+                        if (content.classList.contains('page--current')) {
+                            content.classList.remove('page--current');
+                            content.classList.add('page--hidden');
+                        }
+                    }
+                }
+            });
+        });
+    });
+
+    linksToContent.forEach(link => {
+        link.addEventListener('click', (e)=>{
             e.preventDefault();
+            const contentToShow = Array.from(menuItems).find(item => item.dataset.content === link.dataset.link);
+    
+            contentToShow.click();
+        });
+    });
+
+    iconMenuMobile.addEventListener('click', (e) => {
+        e.preventDefault();
+        console.log('aaa')
+        if(menuMobile.classList.contains('open')){
             menuMobile.classList.remove('open');
-            elementToShow.classList.remove('page--current');
-            elementToShow.classList.add('page--hidden');
-            closeAll.classList.add('selected');
-            aboutUs.classList.remove('selected');
-
-            games.classList.remove('selected');
-            services.classList.remove('selected');
-            contact.classList.remove('selected');
-            
-        });
-
-        closeAll.addEventListener('click', (e) => {
-            e.preventDefault();
-            if(elementToShow.classList.contains('page--current')){
-                menuMobile.classList.remove('open');
-                elementToShow.classList.remove('page--current');
-                elementToShow.classList.add('page--hidden');
-                closeAll.classList.add('selected');
-                aboutUs.classList.remove('selected');
-                games.classList.remove('selected');
-                services.classList.remove('selected');
-                contact.classList.remove('selected');
-            }
-        });
-
-        aboutUs.addEventListener('click', (e) => {
-            e.preventDefault();
-            menuMobile.classList.remove('open');
-            aboutUs.classList.add('selected');
-            closeAll.classList.remove('selected');
-            elementToShow.classList.add('page--current');
-            elementToShow.classList.remove('page--hidden');
-            games.classList.remove('selected');
-            services.classList.remove('selected');
-            contact.classList.remove('selected');
-        });
-
-        games.addEventListener('click', (e) => {
-            e.preventDefault();
-            menuMobile.classList.remove('open');
-            games.classList.add('selected');
-            closeAll.classList.remove('selected');
-            elementToShow.classList.add('page--current');
-            elementToShow.classList.remove('page--hidden');
-            services.classList.remove('selected');
-            contact.classList.remove('selected');
-            aboutUs.classList.remove('selected');
-        });
-        
-        services.addEventListener('click', (e) => {
-            e.preventDefault();
-            menuMobile.classList.remove('open');
-            services.classList.add('selected');
-            closeAll.classList.remove('selected');
-            elementToShow.classList.add('page--current');
-            elementToShow.classList.remove('page--hidden');
-            games.classList.remove('selected');
-            contact.classList.remove('selected');
-            aboutUs.classList.remove('selected');
-        });
-
-        contact.addEventListener('click', (e) => {
-            e.preventDefault();
-            menuMobile.classList.remove('open');
-            services.classList.remove('selected');
-            closeAll.classList.remove('selected');
-            elementToShow.classList.add('page--current');
-            elementToShow.classList.remove('page--hidden');
-            games.classList.remove('selected');
-            contact.classList.add('selected');
-            aboutUs.classList.remove('selected');
-        });
-
-        iconMenuMobile.addEventListener('click', (e) => {
-            e.preventDefault();
-            if(menuMobile.classList.contains('open')){
-                menuMobile.classList.remove('open');
-            }else{
-                menuMobile.classList.add('open');
-            }
-        })
-    }
+        }else{
+            menuMobile.classList.add('open');
+        }
+    });
 });
 
